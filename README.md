@@ -16,7 +16,7 @@
    git clone https://github.com/alinsbtc/G-Scores.git
 ## Create and activate a virtual environment:
    1. Create and activate a virtual environment:
-       ```bash
+
        python -m venv ven
    - **Windows**: venv\Scripts\activate
    - **Mac/Linux**: source venv/bin/activate
@@ -25,7 +25,6 @@
 1. Set up the database
     ```bash
     python manage.py makemigrations
-    ```bash
     python manage.py migrate
 2. Tải dữ liệu mẫu (nếu có)
     ```bash
