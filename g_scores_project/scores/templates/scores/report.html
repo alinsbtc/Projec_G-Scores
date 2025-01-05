@@ -1,0 +1,58 @@
+{% extends 'scores/base.html' %} {% block title %}Home - G-Scores{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Report Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h1>Report Chart</h1>
+    <canvas id="reportChart" width="800" height="400"></canvas>
+    <script>
+      const data = {{ data|safe }}; // Data from Django context
+
+      const labels = ['>= 8', '8 > && >= 6', '6 > && >= 4', '< 4'];
+      const datasets = [];
+
+      Object.keys(data).forEach((subject, index) => {
+          datasets.push({
+              label: subject,
+              data: [
+                  data[subject].level_1,
+                  data[subject].level_2,
+                  data[subject].level_3,
+                  data[subject].level_4
+              ],
+              borderColor: `hsl(${index * 120}, 70%, 50%)`,
+              backgroundColor: `hsl(${index * 120}, 70%, 90%)`,
+              fill: true,
+          });
+      });
+
+      const config = {
+          type: 'bar',
+          data: {
+              labels: labels,
+              datasets: datasets,
+          },
+          options: {
+              responsive: true,
+              plugins: {
+                  legend: { position: 'top' },
+                  title: { display: true, text: 'Student Score Distribution by Subject' },
+              },
+          },
+      };
+
+      const reportChart = new Chart(
+          document.getElementById('reportChart'),
+          config
+      );
+    </script>
+  </body>
+</html>
+
+{% endblock %}

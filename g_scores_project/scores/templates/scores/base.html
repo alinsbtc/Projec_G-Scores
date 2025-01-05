@@ -1,0 +1,48 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}G-Scores{% endblock %}</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'scores/styles.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>G-Scores</h1>
+      </header>
+
+      <div class="layout">
+        <aside class="sidebar">
+          <ul class="menu">
+            <li>
+              <a href="{%url 'index'%}"
+                ><i class="fa-solid fa-house"></i> Dashboard</a
+              >
+            </li>
+            <li>
+              <a href="{%url 'search_scores'%}"
+                ><i class="fa-solid fa-search"></i> Search Scores</a
+              >
+            </li>
+            <li>
+              <a href="{%url 'report'%}"
+                ><i class="fa-solid fa-chart-bar"></i> Reports</a
+              >
+            </li>
+            <li>
+              <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
+            </li>
+          </ul>
+        </aside>
+
+        <main class="main-content">{% block content %}{% endblock %}</main>
+      </div>
+    </div>
+  </body>
+</html>

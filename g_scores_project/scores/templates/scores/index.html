@@ -1,0 +1,28 @@
+{% extends 'scores/base.html' %} {% block title %}Home - G-Scores{% endblock %}
+{% block content %}
+<section class="section">
+  <h2>Top 10 Students of Group A</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>SBD</th>
+        <th>Math</th>
+        <th>Physics</th>
+        <th>Chemistry</th>
+        <th>Total Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for student in top_students %}
+      <tr>
+        <td>{{ student.sbd }}</td>
+        <td>{{ student.toan }}</td>
+        <td>{{ student.vat_li }}</td>
+        <td>{{ student.hoa_hoc }}</td>
+        <td>{{ student.total_score }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}
