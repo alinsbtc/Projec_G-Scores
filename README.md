@@ -24,7 +24,9 @@
 ## Setup Instructions
 1. Set up the database
     ```bash
-   python manage.py migrate
+    python manage.py makemigrations
+    ```bash
+    python manage.py migrate
 2. Tải dữ liệu mẫu (nếu có)
     ```bash
     python manage.py import_scores diem_thi_thpt_2024.csv
